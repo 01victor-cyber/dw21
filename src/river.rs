@@ -22,7 +22,7 @@
 pub fn crossing_advice(depth_ft: u32) -> &'static str {
     match depth_ft {
         0..=2 => "ford",
-        3..5 => "caulk",
+        3..6 => "caulk",
         _ => "ferry",
     }
 }
@@ -46,7 +46,9 @@ pub fn food_status(pounds: Option<u32>) -> &'static str {
     match pounds {
         None => "no record",
         Some(0) => "out of food",
-        Some(n) if n > 50 => "running low",
+        Some(1..=79) => "running low",
+        Some(80..=199) => "well stocked",
+        Some(200..=300) => "plentiful",
         Some(_) => "well stocked",
     }
 }
